@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/LoggingTest.dir/LoggingTest.o  -o LoggingTest  -L/home/hustsyz/文档/惟学无际/HttpServer/HttpServer/Server/base ../libserver_base.a -lpthread -lrt 

@@ -50,6 +50,7 @@ void LogStream::formatInteger(T v)
     }
 }
 
+//重载buffer的实现
 LogStream& LogStream::operator<<(short v)
 {
     *this << static_cast<int>(v);

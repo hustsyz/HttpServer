@@ -10,6 +10,7 @@ class AsyncLogging;
 const int kSmallBuffer = 4000;
 const int kLargeBuffer = 4000 * 1000;
 
+//buffer类为数据缓冲区，muduo采用vector而我这里采用比较简便的char数组
 template<int SIZE> 
 class FixedBuffer: noncopyable
 {

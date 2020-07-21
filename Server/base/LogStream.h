@@ -17,14 +17,16 @@ class FixedBuffer: noncopyable
 public:
     FixedBuffer()
     :   cur_(data_)
-    { }
+    { 
+        end_ = data_ + sizeof data_;
+    }
 
     ~FixedBuffer()
     { }
 
     void append(const char* buf, size_t len)
     {
-        if (avail() > static_cast<int>(len))
+        if (avail() > len)
         {
             memcpy(cur_, buf, len);
             cur_ += len;
@@ -35,7 +37,7 @@ public:
     int length() const { return static_cast<int>(cur_ - data_); }
 
     char* current() { return cur_; }
-    int avail() const { return static_cast<int>(end() - cur_); }
+    size_t avail() const { return static_cast<size_t>(end() - cur_); }
     void add(size_t len) { cur_ += len; }
 
     void reset() { cur_ = data_; }
@@ -43,10 +45,11 @@ public:
 
 
 private:
-    const char* end() const { return data_ + sizeof data_; }
+    const char* end() const { return end_; }
 
     char data_[SIZE];
     char* cur_;
+    char* end_;
 };
 
 

@@ -32,7 +32,7 @@ void AsyncLogging::append(const char* logline, int len)
         currentBuffer_->append(logline, len);
     else
     {
-        buffers_.push_back(currentBuffer_);
+        buffers_.emplace_back(std::move(currentBuffer_));
         currentBuffer_.reset();
         if (nextBuffer_)
             currentBuffer_ = std::move(nextBuffer_);
@@ -67,7 +67,7 @@ void AsyncLogging::threadFunc()
             {
                 cond_.waitForSeconds(flushInterval_);
             }
-            buffers_.push_back(currentBuffer_);
+            buffers_.emplace_back(std::move(currentBuffer_));
             currentBuffer_.reset();
 
             currentBuffer_ = std::move(newBuffer1);
@@ -79,8 +79,8 @@ void AsyncLogging::threadFunc()
         }
 
         assert(!buffersToWrite.empty());
-
-        if (buffersToWrite.size() > 25)
+        //buffer size 大于16丢弃所有的未写的缓冲区，此时写文件的速度小于写入缓冲区的速度。
+        if (buffersToWrite.size() > 16)
         {
             //char buf[256];
             // snprintf(buf, sizeof buf, "Dropped log messages at %s, %zd larger buffers\n",

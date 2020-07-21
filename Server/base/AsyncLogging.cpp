@@ -43,6 +43,7 @@ void AsyncLogging::append(const char* logline, int len)
     }
 }
 
+//newBuffer1, newBuffer2作为缓冲区
 void AsyncLogging::threadFunc()
 {
     assert(running_ == true);

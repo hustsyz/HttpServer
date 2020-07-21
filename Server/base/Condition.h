@@ -7,7 +7,7 @@
 #include <errno.h>
 #include <cstdint>
 #include <time.h>
-
+//条件变量的封装
 class Condition: noncopyable
 {
 public:

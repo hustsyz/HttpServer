@@ -1,3 +1,22 @@
+set(CXX_FLAGS
+    -g
+    # -DVALGRIND
+    -DCHECK_PTHREAD_RETURN_VALUE
+    -D_FILE_OFFSET_BITS=64
+    -Wall
+    -Wextra
+    -Werror
+    -Wconversion
+    -Wno-unused-parameter
+    -Wold-style-cast
+    -Woverloaded-virtual
+    -Wpointer-arith
+    -Wshadow
+    -Wwrite-strings
+    -march=native
+    # -MMD
+    -rdynamic
+    )
 set(SRCS
     Channel.cpp
     Epoll.cpp

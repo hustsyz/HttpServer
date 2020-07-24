@@ -20,19 +20,33 @@ void type_test()
 {
     // 13 lines
     cout << "----------type test-----------" << endl;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << 0;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << 1234567890123;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << 1.0f;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << 3.1415926;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << (short) 1;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << (long long) 1;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << (unsigned int) 1;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << (unsigned long) 1;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << (long double) 1.6555556;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << (unsigned long long) 1;
+    cout << __FILE__ << __LINE__ << endl;
     LOG << 'c';
+    cout << __FILE__ << __LINE__ << endl;
     LOG << "abcdefg";
+    cout << __FILE__ << __LINE__ << endl;
     LOG << string("This is a string");
+    cout << __FILE__ << __LINE__ << endl;
 }
 
 void stressing_single_thread()
@@ -69,7 +83,7 @@ void other()
     LOG << "fddsa" << 'c' << 0 << 3.666 << string("This is a string");
 }
 
-
+//cout << __FILE << __LINE__ << endl;
 int main()
 {
     // 共500014行
